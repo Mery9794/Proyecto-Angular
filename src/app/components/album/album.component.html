@@ -1,0 +1,53 @@
+<div>
+    <h1>Top 10 Álbumes</h1>
+  </div>
+  
+  <div class="row row-cols-1 row-cols-md-5 g-3 justify-content-center align-items-center">
+    <!-- Tarjetas de álbumes del artista -->
+    <div (click)="toggleSelection(item)" *ngFor="let item of items"
+    class="col mb-4" [ngClass]="{'selected': item.selected}">
+      <mat-card class="puntero tarjeta-animada spotify-card">
+        <img mat-card-image [src]="item.images | noimage" alt="Card image cap" class="img-fluid">
+        <mat-card-content>
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">
+            <span class="badge badge-pill badge-danger">{{item.release_date}}</span>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
+  <!-- Sección para mostrar detalles del álbum seleccionado -->
+  <div *ngIf="selectedAlbum" class="album-detalle">
+    <h2>Detalles del Álbum</h2>
+    <div class="detalles">
+      <img [src]="selectedAlbum.images | noimage" alt="{{selectedAlbum.name}}" class="selected-album-image">
+      <div class="detalles2">
+        <h3>{{selectedAlbum.name}}</h3>
+        <p>Artista: {{selectedAlbum.artists[0]?.name || 'No disponible'}}</p>
+        <p>Fecha de lanzamiento: {{selectedAlbum.release_date}}</p>
+        <p>Cantidad de canciones: {{selectedAlbum.total_tracks || 'No disponible'}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Sección para mostrar las portadas de los discos seleccionados -->
+  <div *ngIf="selectedAlbums.length > 0" class="album-selec">
+    <h2>Discos Seleccionados</h2>
+    <div>
+      <mat-card *ngFor="let album of selectedAlbums" class="discSelec">
+        <img mat-card-image [src]="album.images | noimage" alt="{{album.name}}" class="selected-album-image">
+        <p class="nomArtista">Artista: {{selectedAlbum.artists[0]?.name || 'No disponible'}}</p>
+        <p class="nomAlbum">Albun: {{ album.name }}</p>
+        <p class="cantidad">Cantidad de canciones: {{selectedAlbum.total_tracks || 'No disponible'}}</p>
+      </mat-card>
+    </div>
+  </div>
+  
+  <!-- Sección para el formulario reactivo de agregar discos ficticios -->
+  <div class="agregar-disco-form">
+    <app-agregar-disco-ficticio (discoAgregado)="agregarDisco($event)"></app-agregar-disco-ficticio>
+  </div>
+  
+  

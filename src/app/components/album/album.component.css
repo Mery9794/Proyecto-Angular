@@ -1,0 +1,78 @@
+
+h1{
+margin-top: 16px;
+padding-top: 10px;
+padding-left: 10px;
+}
+
+h2{    
+    margin-top: 16px;
+}
+.puntero.tarjeta-animada.spotify-card {
+    background-color: #282828;
+    color: #FFFFFF;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden; 
+}
+
+.puntero.tarjeta-animada.spotify-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.discSelec{ 
+    display: ruby;
+}
+p.nomArtista, p.cantidad, p.nomAlbum{
+    background-color: #121212;
+    color: white;
+    width: 275px;
+}
+.selected-album-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.album-detalle, .album-selec{
+    margin-top: 20px;
+}
+.album-selec{
+    padding-bottom: 40px;
+}
+
+.detalles {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .puntero.tarjeta-animada.spotify-card  {
+        
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin: 10px; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .puntero.tarjeta-animada.spotify-card img {   
+        width: 100%; 
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .spotify-card .card-content {
+        padding: 10px;
+    }
+
+    .spotify-card h5 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .spotify-card .badge {
+
+        font-size: 12px;
+    }
+}

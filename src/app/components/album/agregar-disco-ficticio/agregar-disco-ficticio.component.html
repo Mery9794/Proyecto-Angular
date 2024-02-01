@@ -1,0 +1,34 @@
+<div class="agregar-disco-form">
+  <h2>Agregar Disco Ficticio</h2>
+  <form [formGroup]="discoForm" (ngSubmit)="agregarDiscoFicticio()" class="form-container">
+
+    <mat-form-field class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Año</mat-label>
+      <input matInput type="text" formControlName="anio">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>URL de la imagen</mat-label>
+      <input matInput type="text" formControlName="urlImagen">
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button class="submit-button" [disabled]="!discoForm.valid"
+      (click)="agregarDiscoFicticio()">Agregar Disco Ficticio</button>
+
+  </form>
+</div>
+
+
+<div *ngIf="discos && discos.length > 0" class="lista-discos-ficticios">
+  <h2>Discos Ficticios</h2>
+  <div *ngFor="let disco of discos" class="discFicticio">
+    <img [src]="disco.urlImagen | noimage" alt="{{disco.titulo}}" class="selected-album-image">
+    <p class="nomArtista">Artista: {{disco.titulo}}</p>
+    <p class="nomAlbum">Álbum: {{disco.anio}}</p>
+  </div>
+</div>
